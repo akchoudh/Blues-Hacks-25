@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from flask import Flask, render_template
 
 #Our FRED API key
-api_key = "6b6db579163639914284f1e5729cc668"
+api_key = "*****"
 fred = Fred(api_key)  #
 
 class giveData:
