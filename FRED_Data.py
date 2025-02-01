@@ -2,10 +2,11 @@ from fredapi import Fred
 import pandas as pd
 import matplotlib.pyplot as plt
 from flask import Flask, render_template
+import io
 
 #Our FRED API key
 api_key = "*****"
-fred = Fred(api_key)  #
+fred = Fred(api_key)  #Initializse Fred with our API key
 
 class giveData:
 
@@ -67,6 +68,50 @@ class graphData:
         plt.savefig(plt_path)
         plt.close()
         return plt_path
+
+app = Flask(__name__)
+graphObj = graphData()
+
+
+
+#Associated with the url path "/", and handles the GET and POST (receive and send) methods.
+@app.route("/", methods=["GET", "POST"])
+
+def index():
+    #Render user form
+    return render_template("web.html")
+
+#Here we only need to GET.
+@app.route("/", methods=["GET"])
+def plot_on_websie():
+    #Whatever start/end date and function name we get from the website.
+    start_date = request.args.get("start_date")
+    end_date = request.args.get("end_date")
+    func_name = request.args.get("func_name")
+
+    #Raise error in HTML.
+    if None in (start_date, end_date, func_name):
+        return "Error: arguments missing", 400
+
+    #Maps function name to the function itself.
+    map = {
+        "exchange_rate": graph_obj.data.exchange_rate,
+        "unemployment_rate": graph_obj.data.unemployment_rate,
+        "cpi": graph_obj.data.cpi,
+        "housing_cost": graph_obj.data.housing_cost,
+        "interest_rate": graph_obj.data.interest_rate,
+        "export_value": graph_obj.data.export_value
+    }
+    if func_name not in func_name:
+        return "Error: arguments missing", 400
+
+    func = map[func_name]
+    path = graphObj.graph(func, start_date, end_date)
+
+    if plt_path is None:
+        return "Error: cannot generate graph", 500
+
+    return send_file(plt_path, mimetype="image/png")
 
 
 
