@@ -78,7 +78,7 @@ nav ul li a:hover {
 }
 
 /* About Section */
-.about {
+.about h2{
     padding: 50px 0;
     text-align: center;
     background-color: #ecf0f1;
