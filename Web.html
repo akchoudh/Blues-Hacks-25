@@ -27,11 +27,7 @@
 
     <nav>
 
-      <div class="heading">
-
-        <h4>Navigation Bar</h4>
-
-      </div>
+      <div class="heading"> </div>
 
       <ul class="nav-links">
 
@@ -59,9 +55,10 @@
         <p>We are a team of students dedicated to providing top-notch services. Our mission is to deliver a simple, all in one website aimed at reporting important economic indicators regarding the canadian economy.</p>
     </section>
 
+
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2>Indicator</h2>
+        <h2>Indicators</h2>
         <div class="service-item">
             <h3>Inflation</h3>
             <p>Detailed description of service one.</p>
@@ -74,13 +71,39 @@
             <h3>Employment</h3>
             <p>Detailed description of service three.</p>
         </div>
+        <div class="service-item">
+          <h3>GDP</h3>
+          <p>Detailed description of service four.</p>
+        </div>
     </section>
+    <form id="dateForm">
+      <label for="start_date">Start Date:</label>
+      <input type="date" id="start_date" required>
+  
+      <label for="end_date">End Date:</label>
+      <input type="date" id="end_date" required>
+  
+      <label for="func_name">Select Data Type:</label>
+      <select id="func_name" required>
+          <option value="exchange_rate">Exchange Rate</option>
+          <option value="unemployment_rate">Unemployment Rate</option>
+          <option value="cpi">CPI</option>
+          <option value="housing_cost">Housing Cost</option>
+          <option value="interest_rate">Interest Rate</option>
+          <option value="export_value">Export Value</option>
+      </select>
+  
+      <button type="submit">Generate Graph</button>
+  </form>
+  
+  <!-- Graph will appear here -->
+  <img id="graph" style="display:none; margin-top: 20px;" alt="Generated Graph">
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
         <p>Have questions? Feel free to reach out!</p>
-        <form action="#">
+         <form action="#">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
             <label for="email">Email</label>
@@ -90,12 +113,29 @@
             <button type="submit">Send Message</button>
         </form>
     </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          document.getElementById("dateForm").addEventListener("submit", function(event) {
+              event.preventDefault(); // Prevent page refresh
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Generic Website. All rights reserved.</p>
-    </footer>
+              // Get user inputs
+              let startDate = document.getElementById("start_date").value;
+              let endDate = document.getElementById("end_date").value;
+              let funcName = document.getElementById("func_name").value;
 
+              // Validate input
+              if (!startDate || !endDate || !funcName) {
+                  alert("Please fill out all fields!");
+                  return;
+              }
+
+              // Update image source dynamically
+              let graphImg = document.getElementById("graph");
+              graphImg.src = `/?start_date=${startDate}&end_date=${endDate}&func_name=${funcName}`;
+              graphImg.style.display = "block"; // Show the image
+          });
+      });
+    </script>
   </body>
-
 </html>
+
