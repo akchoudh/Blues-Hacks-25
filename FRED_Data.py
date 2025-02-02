@@ -83,7 +83,7 @@ def index():
 
 #Here we only need to GET.
 @app.route("/", methods=["GET"])
-def plot_on_websie():
+def plot_on_website():
     #Whatever start/end date and function name we get from the website.
     start_date = request.args.get("start_date")
     end_date = request.args.get("end_date")
