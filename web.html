@@ -4,21 +4,231 @@
 
   <head>
 
+
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-
-      rel="stylesheet"
-
-    />
-
-    <link rel="stylesheet" href="web.css" />
 
     <title>Home</title>
+      <style>
+                     .body-text {
+    text-align: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+/* Navigation Bar */
+.nav-links {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+    background: #3498db;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    background-color: #fff;
+    color: #3498db;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.hero .btn:hover {
+    background-color: #2980b9;
+    color: #fff;
+}
+
+/* About Section */
+.about h2{
+    padding: 20px 0;
+    text-align: center;
+    background-color: #ecf0f1;
+}
+
+.about p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Services Section */
+.Indicators h2{
+    text-align: center;
+}
+.Indicators {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Title styling */
+.Indicators h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Grid layout for indicators */
+.Indicator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between cards */
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Card styling */
+.Indicator-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hover effect */
+.Indicator-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card title */
+.Indicator-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Card text */
+.Indicator-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+.news h2 {
+    text-align: center;
+}
+.news h3{
+    text-align: center;
+    color:#2980b9
+}
+.news img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 25px 0;
+}
+.contact {
+    padding: 50px 0;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact form button {
+    background-color: #fff;
+    color: #3498db;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact form button:hover {
+    background-color: #2980b9;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+      </style>
 
   </head>
 
@@ -80,7 +290,7 @@
         </div>
       </div>
     </section>
-  
+
   <!-- Graph will appear here -->
   <img id="graph" style="display:none; margin-top: 20px;" alt="Generated Graph">
   <section id="news" class = "news">
@@ -135,5 +345,4 @@
     </script>
   </body>
 </html>
-
 
