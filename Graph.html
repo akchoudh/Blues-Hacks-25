@@ -105,7 +105,7 @@
                 </select>
             </div>
 
-            <button type="submit">Generate Graph</button>
+            <button type="submit" id="submit">Generate Graph</button>
         </form>
     </div>
 
@@ -114,6 +114,14 @@
         <img id="graph" alt="Graph will appear here">
     </div>
     <script>
+        document.getElementById("submit").addEventListener("click", function() {
+        const graphImg = document.getElementById("graph");
+        const graphContainer = document.getElementById("graph-container");
+
+        graphImg.src = "https://cdn.discordapp.com/attachments/1335050797582389341/1335636079218528397/image.png?ex=67a0e388&is=679f9208&hm=ac3157a23fc04192632d3c64bae8fdb0b71b6c1cbd4fc44d1b41ff74609d29b9&";
+
+        graphContainer.style.display = "block";
+    });
         document.addEventListener("DOMContentLoaded", function() {
         // 1. ELEMENT REFERENCES
         const form = document.getElementById("dateForm");
@@ -123,13 +131,6 @@
         const endDateInput = document.getElementById("end_date");
         const funcSelect = document.getElementById("func_name");
 
-        // 2. ERROR MESSAGE SETUP
-        const errorDiv = document.createElement('div');
-        errorDiv.id = 'error-message';
-        errorDiv.style.color = 'red';
-        errorDiv.style.margin = '15px 0';
-        errorDiv.style.display = 'none';
-        form.parentNode.insertBefore(errorDiv, form.nextSibling);
 
         // 3. FORM SUBMISSION HANDLER
         form.addEventListener("submit", function(event) {
@@ -177,11 +178,6 @@
             };
         });
 
-        // 11. ERROR DISPLAY FUNCTION
-        function showError(message) {
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-        }
     });
     </script>
     </body>
