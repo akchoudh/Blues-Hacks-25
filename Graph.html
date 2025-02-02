@@ -115,26 +115,74 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("dateForm").addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent page refresh
-  
-                // Get user inputs
-                let startDate = document.getElementById("start_date").value;
-                let endDate = document.getElementById("end_date").value;
-                let funcName = document.getElementById("func_name").value;
-  
-                // Validate input
-                if (!startDate || !endDate || !funcName) {
-                    alert("Please fill out all fields!");
-                    return;
-                }
-  
-                // Update image source dynamically
-                let graphImg = document.getElementById("graph");
-                graphImg.src = `/?start_date=${startDate}&end_date=${endDate}&func_name=${funcName}`;
-                graphImg.style.display = "block"; // Show the image
+        // 1. ELEMENT REFERENCES
+        const form = document.getElementById("dateForm");
+        const graphContainer = document.getElementById("graph-container");
+        const graphImg = document.getElementById("graph");
+        const startDateInput = document.getElementById("start_date");
+        const endDateInput = document.getElementById("end_date");
+        const funcSelect = document.getElementById("func_name");
+
+        // 2. ERROR MESSAGE SETUP
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'error-message';
+        errorDiv.style.color = 'red';
+        errorDiv.style.margin = '15px 0';
+        errorDiv.style.display = 'none';
+        form.parentNode.insertBefore(errorDiv, form.nextSibling);
+
+        // 3. FORM SUBMISSION HANDLER
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent page reload
+
+            // 4. RESET UI STATE
+            errorDiv.style.display = 'none';
+            graphContainer.style.display = 'none';
+
+            // 5. GET FORM VALUES
+            const funcName = funcSelect.value;
+            const startDate = startDateInput.value;
+            const endDate = endDateInput.value;
+
+            // 6. VALIDATION CHECK
+            if (!startDate || !endDate || !funcName) {
+                showError('Please fill in all required fields');
+                return;
+            }
+
+            // 7. BUILD REQUEST URL
+            const params = new URLSearchParams({
+                func_name: funcName,
+                start_date: startDate,    // Already in YYYY-MM-DD format
+                end_date: endDate,
+                t: new Date().getTime()   // Cache buster
             });
+
+            // 8. UPDATE GRAPH IMAGE
+            graphImg.src = `/?${params.toString()}`;
+
+            // 9. SHOW LOADING STATE
+            graphImg.style.display = 'none';
+            graphContainer.style.display = 'block';
+
+            // 10. IMAGE LOAD HANDLERS
+            graphImg.onload = function() {
+                errorDiv.style.display = 'none';
+                graphImg.style.display = 'block';
+            };
+
+            graphImg.onerror = function() {
+                graphContainer.style.display = 'none';
+                showError('Failed to load graph. Check dates and try again.');
+            };
         });
-      </script>
+
+        // 11. ERROR DISPLAY FUNCTION
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+    });
+    </script>
     </body>
   </html>
