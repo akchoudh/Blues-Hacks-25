@@ -31,13 +31,7 @@
 
       <ul class="nav-links">
 
-        <li><a class="active" href="Employment.html">Employment</a></li>
-
-        <li><a href="pages/GDP.html">GDP</a></li>
-
-        <li><a href="pages/Inflation.html">Inflation</a></li>
-
-        <li><a href="pages/trade.html">Trade</a></li>
+        <li><a class="active" href="Graph.html">Graph</a></li>
 
       </ul>
 
@@ -57,48 +51,51 @@
 
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="Indicators" class="Indicators">
         <h2>Indicators</h2>
-        <div class="service-item">
-            <h3>Inflation</h3>
-            <p>Detailed description of service one.</p>
+        <div id = "Indicator-grid">
+        <div class="Indicator-item">
+            <h3>Canada-US Exchange rate</h3>
+            <p>An exchange rate is the rate at which one currency can be exchanged for another between nations or economic zones. It is used to determine the value of various currencies in relation to each other and is important in determining trade and capital flow dynamics.</p>
         </div>
-        <div class="service-item">
-            <h3>Trade</h3>
-            <p>Detailed description of service two.</p>
+        <div class="Indicator-item">
+            <h3>Unemployment Rate</h3>
+            <p>The unemployment rate provides an indication of the health of our economy. A higher unemployment rate can mean the region is contributing less to the economy in terms of the goods or services that are being produced.</p>
         </div>
-        <div class="service-item">
-            <h3>Employment</h3>
-            <p>Detailed description of service three.</p>
+        <div class="Indicator-item">
+            <h3>Consumer Price Index</h3>
+            <p>The CPI measures inflation as experienced by consumers in their day-to-day living expenses.</p>
         </div>
-        <div class="service-item">
-          <h3>GDP</h3>
-          <p>Detailed description of service four.</p>
+        <div class="Indicator-item">
+          <h3>Housing</h3>
+          <p>Housing is becoming more and more important in Canada</p>
         </div>
+        <div class="Indicator-item">
+          <h3>Interest rates</h3>
+          <p>Interest rates are an indicator of overall economic health. When rates are low, it can stimulate borrowing and spending, benefiting your financial situation. High rates can slow economic growth and lead to job market challenges. However they can be used too combat challenges faced by an economy</p>
+        </div>
+        <div class="Indicator-item">
+          <h3>Export Value</h3>
+          <p>Export values are the current value of exports converted to U.S. dollars and expressed as a percentage of the average for the base period</p>
+        </div>
+      </div>
     </section>
-    <form id="dateForm">
-      <label for="start_date">Start Date:</label>
-      <input type="date" id="start_date" required>
-  
-      <label for="end_date">End Date:</label>
-      <input type="date" id="end_date" required>
-  
-      <label for="func_name">Select Data Type:</label>
-      <select id="func_name" required>
-          <option value="exchange_rate">Exchange Rate</option>
-          <option value="unemployment_rate">Unemployment Rate</option>
-          <option value="cpi">CPI</option>
-          <option value="housing_cost">Housing Cost</option>
-          <option value="interest_rate">Interest Rate</option>
-          <option value="export_value">Export Value</option>
-      </select>
-  
-      <button type="submit">Generate Graph</button>
-  </form>
   
   <!-- Graph will appear here -->
   <img id="graph" style="display:none; margin-top: 20px;" alt="Generated Graph">
-
+  <section id="news" class = "news">
+    <h2>Recent News</h2>
+    <article>
+        <h3><a href="https://nationalpost.com/news/politics/trudeau-meets-with-his-cabinet-premiers-amid-reports-25-per-cent-u-s-tariffs-coming">Trudeau meets with his premieres ahead of Trump Tariffs</a></h3>
+        <img src="https://smartcdn.gprod.postmedia.digital/nationalpost/wp-content/uploads/2025/02/0114-tj-wire-trudeau.jpg?quality=90&strip=all&w=1128&h=846&type=webp&sig=OKihvMcvpfEXT8Pnznhv1Q" alt="Italian Trulli">
+        <p></p>
+    </article>
+    <article>
+        <h3><a href="https://www.theglobeandmail.com/canada/article-us-tariffs-will-be-imposed-on-feb-4/">US informs Canada tariffs will be imposed February 4th</a></h3>
+        <img src="https://www.theglobeandmail.com/resizer/v2/V7MUCTWVTNFFTIXR4LLKXI7EV4.JPG?auth=7022e5954eb6b17f759e88628a3fa1a3e0cfcefb2f0bfc92c8a76bf3cb38118d&width=1200&quality=80" alt="Italian Trulli">
+        <p></p>
+    </article>
+  </section>
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
@@ -138,4 +135,5 @@
     </script>
   </body>
 </html>
+
 
