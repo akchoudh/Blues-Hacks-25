@@ -1,188 +1,348 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graph Visualization</title>
-    <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
 
-        body {
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 20px;
-        }
+  <head>
 
-        h1 {
-            margin-bottom: 20px;
-            color: #333;
-        }
 
-        .container {
-            background: white;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+    <meta charset="UTF-8" />
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
 
-        input, select, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    <title>Home</title>
+      <style>
+                     .body-text {
+    text-align: center;
+}
 
-        button {
-            background: #007bff;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            margin-top: 10px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-        button:hover {
-            background: #0056b3;
-        }
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
 
-        #graph-container {
-            margin-top: 20px;
-            display: none;
-        }
+h1, h2, h3 {
+    color: #333;
+}
 
-        #graph {
-            max-width: 100%;
-            border: 2px solid black;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
+/* Navigation Bar */
+.nav-links {
+    background-color: #333;
+    padding: 10px 0;
+}
 
-    <h1>Generate Economic Graph</h1>
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
 
-    <div class="container">
-        <form id="dateForm">
-            <div class="form-group">
-                <label for="start_date">Start Date:</label>
-                <input type="date" id="start_date" required>
-            </div>
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
 
-            <div class="form-group">
-                <label for="end_date">End Date:</label>
-                <input type="date" id="end_date" required>
-            </div>
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
 
-            <div class="form-group">
-                <label for="func_name">Select Data Type:</label>
-                <select id="func_name" required>
-                    <option value="exchange_rate">Exchange Rate</option>
-                    <option value="unemployment_rate">Unemployment Rate</option>
-                    <option value="cpi">CPI</option>
-                    <option value="housing_cost">Housing Cost</option>
-                    <option value="interest_rate">Interest Rate</option>
-                    <option value="export_value">Export Value</option>
-                </select>
-            </div>
+nav ul li a:hover {
+    text-decoration: underline;
+}
 
-            <button type="submit">Generate Graph</button>
+/* Hero Section */
+.hero {
+    background: #3498db;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    background-color: #fff;
+    color: #3498db;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.hero .btn:hover {
+    background-color: #2980b9;
+    color: #fff;
+}
+
+/* About Section */
+.about h2{
+    padding: 20px 0;
+    text-align: center;
+    background-color: #ecf0f1;
+}
+
+.about p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Services Section */
+.Indicators h2{
+    text-align: center;
+}
+.Indicators {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Title styling */
+.Indicators h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Grid layout for indicators */
+.Indicator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between cards */
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Card styling */
+.Indicator-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hover effect */
+.Indicator-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card title */
+.Indicator-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Card text */
+.Indicator-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+.news h2 {
+    text-align: center;
+}
+.news h3{
+    text-align: center;
+    color:#2980b9
+}
+.news img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 25px 0;
+}
+.contact {
+    padding: 50px 0;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact form button {
+    background-color: #fff;
+    color: #3498db;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact form button:hover {
+    background-color: #2980b9;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+      </style>
+
+  </head>
+
+  <body>
+    <div class="body-text"><h1>This is Home Page!</h1></div>
+
+    <nav>
+
+      <div class="heading"> </div>
+
+      <ul class="nav-links">
+
+        <li><a class="active" href="graph">Graph</a></li>
+
+      </ul>
+
+    </nav>
+
+      <section id="home" class="hero">
+        <h1>Welcome to Our Website</h1>
+        <p>Your go-to platform for all stats and Data on the Canadian Economy</p>
+        <a href="#about" class="btn">Learn More</a>
+      </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>We are a team of students dedicated to providing top-notch services. Our mission is to deliver a simple, all in one website aimed at reporting important economic indicators regarding the canadian economy.</p>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="Indicators" class="Indicators">
+        <h2>Indicators</h2>
+        <div id = "Indicator-grid">
+        <div class="Indicator-item">
+            <h3>Canada-US Exchange rate</h3>
+            <p>An exchange rate is the rate at which one currency can be exchanged for another between nations or economic zones. It is used to determine the value of various currencies in relation to each other and is important in determining trade and capital flow dynamics.</p>
+        </div>
+        <div class="Indicator-item">
+            <h3>Unemployment Rate</h3>
+            <p>The unemployment rate provides an indication of the health of our economy. A higher unemployment rate can mean the region is contributing less to the economy in terms of the goods or services that are being produced.</p>
+        </div>
+        <div class="Indicator-item">
+            <h3>Consumer Price Index</h3>
+            <p>The CPI measures inflation as experienced by consumers in their day-to-day living expenses.</p>
+        </div>
+        <div class="Indicator-item">
+          <h3>Housing</h3>
+          <p>Housing is becoming more and more important in Canada</p>
+        </div>
+        <div class="Indicator-item">
+          <h3>Interest rates</h3>
+          <p>Interest rates are an indicator of overall economic health. When rates are low, it can stimulate borrowing and spending, benefiting your financial situation. High rates can slow economic growth and lead to job market challenges. However they can be used too combat challenges faced by an economy</p>
+        </div>
+        <div class="Indicator-item">
+          <h3>Export Value</h3>
+          <p>Export values are the current value of exports converted to U.S. dollars and expressed as a percentage of the average for the base period</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- Graph will appear here -->
+  <img id="graph" style="display:none; margin-top: 20px;" alt="Generated Graph">
+  <section id="news" class = "news">
+    <h2>Recent News</h2>
+    <article>
+        <h3><a href="https://nationalpost.com/news/politics/trudeau-meets-with-his-cabinet-premiers-amid-reports-25-per-cent-u-s-tariffs-coming">Trudeau meets with his premieres ahead of Trump Tariffs</a></h3>
+        <img src="https://smartcdn.gprod.postmedia.digital/nationalpost/wp-content/uploads/2025/02/0114-tj-wire-trudeau.jpg?quality=90&strip=all&w=1128&h=846&type=webp&sig=OKihvMcvpfEXT8Pnznhv1Q" alt="Italian Trulli">
+        <p></p>
+    </article>
+    <article>
+        <h3><a href="https://www.theglobeandmail.com/canada/article-us-tariffs-will-be-imposed-on-feb-4/">US informs Canada tariffs will be imposed February 4th</a></h3>
+        <img src="https://www.theglobeandmail.com/resizer/v2/V7MUCTWVTNFFTIXR4LLKXI7EV4.JPG?auth=7022e5954eb6b17f759e88628a3fa1a3e0cfcefb2f0bfc92c8a76bf3cb38118d&width=1200&quality=80" alt="Italian Trulli">
+        <p></p>
+    </article>
+  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions? Feel free to reach out!</p>
+         <form action="#">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send Message</button>
         </form>
-    </div>
-
-    <div id="graph-container">
-        <h2>Generated Graph</h2>
-        <img id="graph" alt="Graph will appear here">
-    </div>
+    </section>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        // 1. ELEMENT REFERENCES
-        const form = document.getElementById("dateForm");
-        const graphContainer = document.getElementById("graph-container");
-        const graphImg = document.getElementById("graph");
-        const startDateInput = document.getElementById("start_date");
-        const endDateInput = document.getElementById("end_date");
-        const funcSelect = document.getElementById("func_name");
+      document.addEventListener("DOMContentLoaded", function() {
+          document.getElementById("dateForm").addEventListener("submit", function(event) {
+              event.preventDefault(); // Prevent page refresh
 
-        // 2. ERROR MESSAGE SETUP
-        const errorDiv = document.createElement('div');
-        errorDiv.id = 'error-message';
-        errorDiv.style.color = 'red';
-        errorDiv.style.margin = '15px 0';
-        errorDiv.style.display = 'none';
-        form.parentNode.insertBefore(errorDiv, form.nextSibling);
+              // Get user inputs
+              let startDate = document.getElementById("start_date").value;
+              let endDate = document.getElementById("end_date").value;
+              let funcName = document.getElementById("func_name").value;
 
-        // 3. FORM SUBMISSION HANDLER
-        form.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent page reload
+              // Validate input
+              if (!startDate || !endDate || !funcName) {
+                  alert("Please fill out all fields!");
+                  return;
+              }
 
-            // 4. RESET UI STATE
-            errorDiv.style.display = 'none';
-            graphContainer.style.display = 'none';
-
-            // 5. GET FORM VALUES
-            const funcName = funcSelect.value;
-            const startDate = startDateInput.value;
-            const endDate = endDateInput.value;
-
-            // 6. VALIDATION CHECK
-            if (!startDate || !endDate || !funcName) {
-                showError('Please fill in all required fields');
-                return;
-            }
-
-            // 7. BUILD REQUEST URL
-            const params = new URLSearchParams({
-                func_name: funcName,
-                start_date: startDate,    // Already in YYYY-MM-DD format
-                end_date: endDate,
-                t: new Date().getTime()   // Cache buster
-            });
-
-            // 8. UPDATE GRAPH IMAGE
-            graphImg.src = `/?${params.toString()}`;
-
-            // 9. SHOW LOADING STATE
-            graphImg.style.display = 'none';
-            graphContainer.style.display = 'block';
-
-            // 10. IMAGE LOAD HANDLERS
-            graphImg.onload = function() {
-                errorDiv.style.display = 'none';
-                graphImg.style.display = 'block';
-            };
-
-            graphImg.onerror = function() {
-                graphContainer.style.display = 'none';
-                showError('Failed to load graph. Check dates and try again.');
-            };
-        });
-
-        // 11. ERROR DISPLAY FUNCTION
-        function showError(message) {
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-        }
-    });
+              // Update image source dynamically
+              let graphImg = document.getElementById("graph");
+              graphImg.src = `/?start_date=${startDate}&end_date=${endDate}&func_name=${funcName}`;
+              graphImg.style.display = "block"; // Show the image
+          });
+      });
     </script>
-    </body>
-  </html>
+  </body>
+</html>
+
