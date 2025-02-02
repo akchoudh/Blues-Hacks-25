@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Visualization</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #graph-container {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #graph {
+            max-width: 100%;
+            border: 2px solid black;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Generate Economic Graph</h1>
+
+    <div class="container">
+        <form id="dateForm">
+            <div class="form-group">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="func_name">Select Data Type:</label>
+                <select id="func_name" required>
+                    <option value="exchange_rate">Exchange Rate</option>
+                    <option value="unemployment_rate">Unemployment Rate</option>
+                    <option value="cpi">CPI</option>
+                    <option value="housing_cost">Housing Cost</option>
+                    <option value="interest_rate">Interest Rate</option>
+                    <option value="export_value">Export Value</option>
+                </select>
+            </div>
+
+            <button type="submit">Generate Graph</button>
+        </form>
+    </div>
+
+    <div id="graph-container">
+        <h2>Generated Graph</h2>
+        <img id="graph" alt="Graph will appear here">
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("dateForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent page refresh
+  
+                // Get user inputs
+                let startDate = document.getElementById("start_date").value;
+                let endDate = document.getElementById("end_date").value;
+                let funcName = document.getElementById("func_name").value;
+  
+                // Validate input
+                if (!startDate || !endDate || !funcName) {
+                    alert("Please fill out all fields!");
+                    return;
+                }
+  
+                // Update image source dynamically
+                let graphImg = document.getElementById("graph");
+                graphImg.src = `/?start_date=${startDate}&end_date=${endDate}&func_name=${funcName}`;
+                graphImg.style.display = "block"; // Show the image
+            });
+        });
+      </script>
+    </body>
+  </html>
