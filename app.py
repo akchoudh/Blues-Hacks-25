@@ -1,7 +1,7 @@
 from fredapi import Fred
 import pandas as pd
 import matplotlib.pyplot as plt
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file
 import io
 
 #Our FRED API key
@@ -95,12 +95,12 @@ def plot_on_website():
 
     #Maps function name to the function itself.
     map = {
-        "exchange_rate": graph_obj.data.exchange_rate,
-        "unemployment_rate": graph_obj.data.unemployment_rate,
-        "cpi": graph_obj.data.cpi,
-        "housing_cost": graph_obj.data.housing_cost,
-        "interest_rate": graph_obj.data.interest_rate,
-        "export_value": graph_obj.data.export_value
+        "exchange_rate": graphObj.data.exchange_rate,
+        "unemployment_rate": graphObj.data.unemployment_rate,
+        "cpi": graphObj.data.cpi,
+        "housing_cost": graphObj.data.housing_cost,
+        "interest_rate": graphObj.data.interest_rate,
+        "export_value": graphObj.data.export_value
     }
     if func_name not in func_name:
         return "Error: arguments missing", 400
@@ -108,11 +108,16 @@ def plot_on_website():
     func = map[func_name]
     path = graphObj.graph(func, start_date, end_date)
 
-    if plt_path is None:
+    print(f"Graph saved to: {image_path}")
+
+    if path is None:
         return "Error: cannot generate graph", 500
+    return send_file(path, mimetype="image/png")
 
-    return send_file(plt_path, mimetype="image/png")
+@app.route("/graph")
+def graph():
+    return render_template("Graph.html")
 
 
-
-
+if __name__ == "__main__":
+    app.run(debug=True)
